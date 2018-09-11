@@ -1,0 +1,9 @@
+<div class="col-xs-12">
+  <div class="multi-step-wrapper">
+    <ul>
+      <li *ngFor="let step of stepsWithStates" [ngClass]="step.className" [ngStyle]="{'width': with}" (click)="onStepClick(step.order)">
+        {{step.name}}
+      </li>
+    </ul>
+  </div>
+</div>

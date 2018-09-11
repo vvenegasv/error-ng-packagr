@@ -1,0 +1,84 @@
+/*progressbar*/
+.multi-step-wrapper ul {
+  margin-bottom: 30px;
+  overflow: hidden;
+  /*CSS counters to number the steps*/
+  counter-reset: step;
+}
+
+.multi-step-wrapper li {
+  list-style-type: none;
+  color: black;
+  text-transform: uppercase;
+  font-size: 12px;
+  float: left;
+  position: relative;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/*Se enumera el paso*/
+.multi-step-wrapper li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 40px;
+  height: 40px;
+  line-height: 42px;
+  display: block;
+  font-size: 14px;
+  color: white;
+  background: #d52b1e;
+  border-radius: 25px;
+  margin: 0 auto 10px auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/*Linea que conecta los puntos de los pasos*/
+.multi-step-wrapper li:after {
+  content: '';
+  width: 100%;
+  height: 4px;
+  background: #d52b1e;
+  position: absolute;
+  left: -50%;
+  top: 19px;
+  z-index: 1; /*put it behind the numbers*/
+}
+
+/*Se elimina la linea de conexión de puntos para el primer elemento*/
+.multi-step-wrapper li:first-child:after {
+  content: none;
+}
+
+/*Estilo para los elementos activos*/
+.multi-step-wrapper li.active:before, .multi-step-wrapper li.active:after {
+  background: #F2B130;
+}
+
+/*Estilo para los elementos completados*/
+.multi-step-wrapper li.completed:before {
+  content: '\f00c';
+  font-family: FontAwesome;
+}
+
+.multi-step-wrapper li.completed:before, .multi-step-wrapper li.completed:after {
+  background: #c3d10a;
+}
+
+/*
+ Configuración del mouse encima para elementos completados
+.multi-step-wrapper li.completed:hover::before {
+  background: #E1EF2F;
+  cursor: pointer;
+}
+*/
+
+/*
+Configuración del mouse encima cuando se realiza click
+.multi-step-wrapper li.completed:active::before {
+  background: #9EAA00;
+  cursor: pointer;
+}
+*/
