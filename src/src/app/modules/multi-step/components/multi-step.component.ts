@@ -9,11 +9,10 @@ import { ObjectHelper } from '@ercl/helpers';
 })
 export class MultiStepComponent implements OnInit {
 
-  @Input()
-  private steps: MultiStep[] = [];
-  private currentIndex: number = 0;
-  private stepsWithStates: MultiStepWithState[] = null;
-  private with: string;
+  @Input() public steps: MultiStep[] = [];
+  public stepsWithStates: MultiStepWithState[] = null;
+  public currentIndex: number = 0;
+  public with: string;
   
 
   constructor() { }
@@ -25,7 +24,7 @@ export class MultiStepComponent implements OnInit {
     this.refreshClasses();
   }
 
-  private onStepClick(stepOrder: number): void {
+  public onStepClick(stepOrder: number): void {
     let clickedStep = this.stepsWithStates.filter(x => x.order === stepOrder)[0];
     if (clickedStep.className === 'completed') {
       if (!ObjectHelper.isNullOrUndefined(clickedStep.callback)) {
@@ -34,7 +33,7 @@ export class MultiStepComponent implements OnInit {
     }
   }
 
-  private refreshClasses() {
+  public refreshClasses() {
     var currentStep = this.stepsWithStates[this.currentIndex];
     this.stepsWithStates.forEach(step => {
       if (step.order < currentStep.order)
